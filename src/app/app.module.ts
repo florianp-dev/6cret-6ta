@@ -4,14 +4,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConnectionComponent } from './connection/connection.component';
 import { HomeComponent } from './home/home.component';
+import { IdentificationComponent } from './identification/identification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConnectionComponent,
-    HomeComponent
+    HomeComponent,
+    IdentificationComponent
   ],
   imports: [
     BrowserModule,

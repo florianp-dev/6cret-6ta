@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConnectionComponent } from './connection/connection.component';
+import { IdentificationComponent } from './identification/identification.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'connection', component: ConnectionComponent }
+  { path: 'ident', component: IdentificationComponent }
 ];
 
 @NgModule({
