@@ -15,8 +15,10 @@ export class DiscoverService {
   }
 
   getToGift() {
-    return players.find((elem) => {
-      elem.id === this.currentToken
-    }).togift;
+    var togift = players.find(
+      elem => elem.id === this.currentToken
+    ).togift;
+    this.currentToken = "";
+    return togift;
   }
 }
