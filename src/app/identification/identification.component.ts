@@ -18,7 +18,7 @@ export class IdentificationComponent implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
-      token : this.formBuilder.control('', [Validators.required])
+      token : this.formBuilder.control('', [Validators.required, Validators.minLength(24), Validators.maxLength(24)])
     });
   }
 
