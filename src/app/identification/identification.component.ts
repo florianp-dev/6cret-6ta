@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DiscoverService } from '../discover.service';
 
 @Component({
   selector: 'app-identification',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class IdentificationComponent implements OnInit {
   form : FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private discoverService: DiscoverService) {
     this.initForm();
   }
 
@@ -24,6 +25,7 @@ export class IdentificationComponent implements OnInit {
 
   submitForm() {
     const value = this.form.get('token').value;
-    alert(value);
+    this.discoverService.setToken(value);
+    // TODO redirect route to view gift
   }
 }
