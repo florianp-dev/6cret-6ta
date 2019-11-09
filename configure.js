@@ -4,20 +4,60 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-var nbParticipant;
-var participants = [];
+var inputs = [];
+var identified = [];
 
-rl.question('Pour combien de participants ? ', (answer) => {
-  nbParticipant = answer;
+rl.prompt();
 
+rl.on('line', (input) => {
+  if (input === 'ok')
+    rl.close();
 
-
-  for (var i = 0; i < nbParticipant; i++) {
-    rl.question(`${i+1}e participant : `, (player) => {
-        participants[i] = player;
-        rl.close();
-    });
-  }
-
-  rl.close();
+  inputs.push(input);
 });
+
+rl.on('close', (cmd) => {
+  assign_id();
+  assign_gift();
+  save_config();
+});
+
+function assign_id() {
+  for (var i=0; i<inputs.length; i++) {
+    var current_value = inputs[i];
+    identified.push(
+      {
+        name : current_value,
+        id : uniq_id()
+      }
+    )
+  }
+}
+
+function assign_gift() {
+  var len = inputs.length;
+  for (var i=0; i<len; i++) {
+    var picked = inputs[Math.floor(Math.random() * len)];
+    var current = identified[i];
+
+    if (picked !== current.name) {
+      identified[i] = {
+        name : current.name,
+        id : current.id,
+        togift : picked
+      }
+    } else {
+      i--;
+    }
+
+    continue;
+  }
+}
+
+function save_config() {
+
+}
+
+function uniq_id() {
+  return '_' + Math.random().toString(36).substr(2, 24);
+}
