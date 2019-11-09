@@ -1,4 +1,5 @@
 const readline = require('readline');
+const fs = require('fs');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -55,7 +56,17 @@ function assign_gift() {
 }
 
 function save_config() {
-
+  fs.writeFile(
+    './6cret_config.json',
+    JSON.stringify(identified),
+    (err) => {
+      if (err) {
+          console.error(err);
+          return;
+      };
+      console.log("Fichier créé avec succès.");
+    }
+  );
 }
 
 function uniq_id() {

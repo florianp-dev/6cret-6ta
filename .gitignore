@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+6cret_config.json
 # Only exists if Bazel was run
 /bazel-out
 
