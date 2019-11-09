@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiscoverService } from '../discover.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-gift',
@@ -8,11 +9,14 @@ import { DiscoverService } from '../discover.service';
 })
 export class ViewGiftComponent implements OnInit {
 
-  togift : String;
+  currentUser: any;
 
-  constructor(private discoverService : DiscoverService) { }
+  constructor(private discoverService : DiscoverService, private router: Router) {
+    this.currentUser = this.discoverService.getToGift();
+  }
 
   ngOnInit() {
-    this.togift = this.discoverService.getToGift();
+    if (this.currentUser === undefined)
+      this.router.navigateByUrl('/ident');
   }
 }
