@@ -50,8 +50,6 @@ function assign_gift() {
     } else {
       i--;
     }
-
-    continue;
   }
 }
 
