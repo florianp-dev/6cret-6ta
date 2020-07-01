@@ -36,17 +36,19 @@ function assign_id() {
 }
 
 function assign_gift() {
-  var len = inputs.length;
+  let len = inputs.length;
   for (var i=0; i<len; i++) {
-    var picked = inputs[Math.floor(Math.random() * len)];
-    var current = identified[i];
+    var pickedPos = Math.floor(Math.random() * inputs.length);
+    var pickedEntrant = inputs[pickedPos];
+    var currentEntrant = identified[i];
 
-    if (picked !== current.name) {
+    if (pickedEntrant !== currentEntrant.name) {
       identified[i] = {
-        name : current.name,
-        id : current.id,
-        togift : picked
+        name : currentEntrant.name,
+        id : currentEntrant.id,
+        togift : pickedEntrant
       }
+      inputs.splice(pickedPos, 1);
     } else {
       i--;
     }
